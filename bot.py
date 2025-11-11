@@ -1,6 +1,7 @@
 from flask import Flask
 import threading
 
+# Dummy HTTP server for health checks
 app = Flask(__name__)
 
 @app.route('/')
@@ -10,9 +11,9 @@ def health():
 def run_health_server():
     app.run(host='0.0.0.0', port=8080)
 
+# Start the dummy server in a background thread
 threading.Thread(target=run_health_server).start()
 
-# --- Your existing bot logic continues below ---
 
 
 
@@ -124,5 +125,6 @@ async def mirror_message(event):
 
 log.info("Bot is now running. Listening for new messages...")
 datgbot.run_until_disconnected()
+
 
 
