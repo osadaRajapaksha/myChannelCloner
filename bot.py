@@ -1,3 +1,34 @@
+from flask import Flask
+import threading
+
+app = Flask(__name__)
+
+@app.route('/')
+def health():
+    return 'OK', 200
+
+def run_health_server():
+    app.run(host='0.0.0.0', port=8080)
+
+threading.Thread(target=run_health_server).start()
+
+# --- Your existing bot logic continues below ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ChannelAutoPost – Modified for 10→10 Mirroring
 # Based on ChannelAutoForwarder by @xditya
 # Edited for 1-to-1 channel mirroring (fresh repost, not forward)
@@ -93,4 +124,5 @@ async def mirror_message(event):
 
 log.info("Bot is now running. Listening for new messages...")
 datgbot.run_until_disconnected()
+
 
